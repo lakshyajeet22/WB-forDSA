@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Boardly – Infinite Whiteboard</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <header id="topbar" class="floating">
+    <span class="logo"><i></i>Boardly</span>
+    <input id="board-title" aria-label="Board title" />
+    <button class="btn" id="btn-boards" data-menu>Boards ▾</button>
+    <span class="spacer"></span>
+    <button class="btn" id="btn-undo" title="Undo (Ctrl+Z)">↶</button>
+    <button class="btn" id="btn-redo" title="Redo (Ctrl+Y)">↷</button>
+    <span class="divider"></span>
+    <button class="btn" id="btn-zoom-out" title="Zoom out">−</button>
+    <button class="btn" id="zoom-label" title="Reset zoom" style="min-width:52px">100%</button>
+    <button class="btn" id="btn-zoom-in" title="Zoom in">+</button>
+    <button class="btn" id="btn-fit" title="Fit to screen">⤢ Fit</button>
+    <span class="divider"></span>
+    <button class="btn" id="btn-dsa" data-menu title="Insert DSA diagram">DSA ▾</button>
+    <button class="btn" id="btn-export" data-menu>Export ▾</button>
+    <button class="btn" id="btn-share" title="Download board file (.json)">Share</button>
+    <button class="btn" id="btn-settings" data-menu title="Settings">⚙</button>
+    <button class="btn" id="btn-theme" title="Toggle theme">◐</button>
+    <button class="btn" id="btn-panels" title="Panels">☰</button>
+  </header>
+
+  <nav id="toolbar" class="floating" aria-label="Tools"></nav>
+
+  <aside id="sidebar" class="floating">
+    <div class="row">Fill <span><input type="color" id="prop-fill" /><button class="btn btn-small" id="btn-no-fill">none</button></span></div>
+    <div class="row">Border <span><input type="color" id="prop-stroke" /><button class="btn btn-small" id="btn-auto-stroke">auto</button></span></div>
+    <div class="row">Thickness <input type="range" id="prop-sw" min="0" max="12" /></div>
+    <div class="row">Style
+      <select id="prop-dash"><option>solid</option><option>dashed</option><option>dotted</option></select>
+    </div>
+    <div class="row">Opacity <input type="range" id="prop-op" min=".1" max="1" step=".05" /></div>
+    <div class="row">Radius <input type="range" id="prop-r" min="0" max="60" /></div>
+    <div class="row">Font size <input type="number" id="prop-fs" min="8" max="120" /></div>
+    <div class="row">Font
+      <select id="prop-ff">
+        <option value="system-ui, sans-serif">Sans</option>
+        <option value="Georgia, serif">Serif</option>
+        <option value="ui-monospace, Menlo, monospace">Mono</option>
+        <option value="'Comic Sans MS', cursive">Hand</option>
+      </select>
+    </div>
+    <div class="row">Align
+      <select id="prop-al"><option>left</option><option>center</option><option>right</option></select>
+    </div>
+    <div class="row">Text color <input type="color" id="prop-tc" /></div>
+    <div class="row">Arrowhead
+      <select id="prop-ah"><option value="arrow">triangle</option><option value="dot">dot</option><option value="none">none</option></select>
+    </div>
+    <h4>Arrange</h4>
+    <div class="button-group" id="arrange-buttons"></div>
+    <h4>Layers</h4>
+    <div id="layers-list"></div>
+  </aside>
+
+  <div id="popup" class="floating"></div>
+  <input type="file" id="image-input" accept="image/*" hidden />
+  <textarea id="text-editor"></textarea>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
